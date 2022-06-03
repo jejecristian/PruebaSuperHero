@@ -1,0 +1,163 @@
+<!--
+Prueba Final Modulo 2 - Javascript
+Alumno: Cristian Torres
+
+Casos supuestos:
+1.- Se agrega un NavBar que presenta 2 item de Menu:
+- Buscar SuperHero
+- Ver lista de SuperHero
+2.- El primer item presenta los elementos necesarios para buscar un personaje mediante un ID, mediante la página "index.html".
+3.- El segundo item presenta una página adicional llamada "listaSuperHero.html" que permite visualizar todos los personajes disponibles por medio de tres tablas.
+Cada tabla contiene ID y Nombre del personaje, de modo que facilite la busqueda de un perfil de SuperHero determinado.
+4.- Cuando un personaje no posee estadisticas, también se presenta un gráfico de torta, pero se maneja de forma tal que muestre todo en cero, 
+incluyendo un label extra que dice "SuperHero sin estadisticas".
+5.- Se cambiaron los colores de la temática del ejemplo, por uno más adhoc al estilo de personajes de super heroes. 
+Así también como la orientación de los elementos en la página aplicando Bootstrap.
+6.- Se agrega pie de página como información extra. No es requerido en la pauta.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Cristian Torres">
+    <meta name="keywords"
+        content="desafioLatam, html, css, bootstrap, javascript, funciones, condicionales, ciclos, arreglos, objetos, api, jquery, canvasjs">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" type="image/ico" href="assets/img/favicon.ico">
+
+    <!-- Font awesome v5.15.4-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Bootstrap CSS v5.1.3-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- jQuery v3.6.0-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>SuperHero</title>
+</head>
+
+<body>
+    <!-- Se crea cabecera vacia -->
+    <header id="inicio">
+        <h1 class="m-0"></h1>
+    </header>
+
+    <!-- Menu Navbar-->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <img class="d-inline-block align-top" src="assets/img/favicon.ico" alt="Logo SuperHero"
+                text="Logo SuperHero">
+            <!-- Boton hamburguesa -->
+            <button id="btnHamburguesa" class="navbar-toggler ml-auto" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav text-end divMenu my-2 p-2">
+                    <a id="linkBuscarSuperHero" class="nav-link" href="#seccionBusqueda">
+                        <h5 class="text-danger h4 bg-transparent">Buscar SuperHero</h5>
+                    </a>
+                    <a class="nav-link" href="listaSuperHero.html">
+                        <span class="text-warning">Ver lista de SuperHero</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Seccion de Busqueda del SuperHero -->
+    <section id="seccionBusqueda">
+        <div class="container text-center py-2">
+            <img class="img-fluid rounded-pill" src="assets/img/sh1.jpg" alt="SuperHero Image">
+            <h1 class="text-dark">Encuentra tu SuperHero</h1>
+            <p class="lead text-warning">Ingresa el número del SuperHero a buscar</p>
+            <div class="row">
+                <div class="col-12">
+                    <input id="idSuperHero" class="text-center rounded-pill" type="text" placeholder="Ejemplo: 213">
+                </div>
+                <div class="col-12">
+                    <a id="buscar" class="btn btn-dark text-danger btn-lg mt-2" href="#" role="button">Buscar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seccion para mostrar perfil y estadisticas del SuperHero encontrado -->
+    <section id="seccionEncontrado">
+        <div class="container py-2">
+            <div class="row">
+                <!-- Costado izquiero muestra perfil -->
+                <div class="col-12 col-lg-6 pb-5">
+                    <div id="divPerfil" class="card bg-warning border border-3 border-success">
+                        <h5 class="text-center">SuperHero Encontrado</h5>
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <img id="imgProfile" class="img-thumbnail" src="" alt="SuperHero Profile Image">
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="card-body">
+                                    <h5 id="nombre" class="card-title"></h5>
+                                    <p class="card-text"><small id="conexiones" class="text-muted"></small></p>
+                                    <p class="card-text border-bottom my-0 ml-3"><small id="publicadoPor"
+                                            class="text-muted"></small></p>
+                                    <p class="card-text border-bottom my-0 ml-3"><small id="ocupacion"
+                                            class="text-muted"></small>
+                                    </p>
+                                    <p class="card-text border-bottom my-0 ml-3"><small id="primeraAparicion"
+                                            class="text-muted"></small></p>
+                                    <p class="card-text border-bottom my-0 ml-3"><small id="altura"
+                                            class="text-muted"></small>
+                                    </p>
+                                    <p class="card-text border-bottom my-0 ml-3"><small id="peso"
+                                            class="text-muted"></small>
+                                    </p>
+                                    <p class="card-text my-0 ml-3"><small id="alianza" class="text-muted"></small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Costado derecho muestra gráfico de torta-->
+                <div class="col-12 col-lg-6">
+                    <div id="chartContainer"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Se crea pie de página -->
+    <footer class="bg-dark text-muted text-center">
+        <a id="scroll-up" href="#inicio"><i class="fas fa-angle-double-up"></i></a>
+        <p class="mb-0">&copy; 2022 SuperHero. Todos los derechos reservados.</p>
+        <p class="mb-0">Develop by C.T. JavaScript & JQuery.</p>
+    </footer>
+
+    <!-- Option 1: Bootstrap Bundle with Popper v5.1.3 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <!-- CanvasJS v3.6.4-->
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <!-- Custom jQuery -->
+    <script src="assets/js/jQuery.SuperHero.js" charset="utf-8"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
