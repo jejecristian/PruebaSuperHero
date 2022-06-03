@@ -17,6 +17,10 @@ body {
     border-color: #b21212;
 }
 
+#seccionBusqueda {
+    padding-bottom: 5rem;
+}
+
 footer {
     position: absolute;
     padding-top: 2rem;
