@@ -94,10 +94,10 @@ let consumirApi = (idSuperHeroe) => {
       $('#seccionBusqueda').hide(); // Oculta seccion de busqueda
       $('#seccionEncontrado').show(); // Presenta perfil y estadisticas del personaje
     },
-    error: function (data) {
+    error: function (error) {
       alert("Error: se ha producido un error al intentar consumir la API.\nSe imprime detalle en la consola...");
       console.log("Error generado:");
-      console.log(data.error);
+      console.log(error);
     },
     async: true
   });
