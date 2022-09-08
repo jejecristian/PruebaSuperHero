@@ -10,7 +10,7 @@ $('#idSuperHero').val(''); // Restablece a vacio el cuadro de busqueda
 let consumirApi = (idSuperHeroe) => {
   $.ajax({
     type: "GET",
-    url: "https://superheroapi.com/api.php/10158454625280878/" + idSuperHeroe,
+    url: `https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/id/${idSuperHeroe}.json`,
     dataType: "json",
     success: function (data) {
 
@@ -23,6 +23,8 @@ let consumirApi = (idSuperHeroe) => {
       $('#nombre').text('Nombre: ' + data.name);
       // conexiones
       let propiedad = 1;
+      //TODO: 1.- COMENTAR LA LINEA
+      
       for (const groupAffiliation in data.connections) {
         if (propiedad == 1) {
           $('#conexiones').text('Conexiones: ' + data.connections[groupAffiliation]);
@@ -90,7 +92,7 @@ let consumirApi = (idSuperHeroe) => {
         }]
       });
       chart.render();
-      
+
       $('#seccionBusqueda').hide(); // Oculta seccion de busqueda
       $('#seccionEncontrado').show(); // Presenta perfil y estadisticas del personaje
     },

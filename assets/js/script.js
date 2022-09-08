@@ -17,3 +17,11 @@ let validarBusqueda = () => {
 let botonBuscar =  document.getElementById('buscar')
 botonBuscar.addEventListener('click', validarBusqueda)
 
+// let num = 1;
+// const getPokemon = async () => {
+//   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${num}`);
+//   const { name } = await response.json();
+//   console.log(name);
+//   num < 10 ? num++ : clearInterval(intervalo);
+// };
+// //const intervalo = setInterval(getPokemon, 2000);
